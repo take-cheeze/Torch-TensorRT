@@ -56,38 +56,48 @@ new_local_repository(
 # Tarballs and fetched dependencies (default - use in cases when building from precompiled bin and tarballs)
 #############################################################################################################
 
-http_archive(
-    name = "libtorch",
-    build_file = "@//third_party/libtorch:BUILD",
-    strip_prefix = "libtorch",
-    urls = ["https://download.pytorch.org/libtorch/test/cu124/libtorch-cxx11-abi-shared-with-deps-latest.zip"],
-)
+# http_archive(
+#     name = "libtorch",
+#     build_file = "@//third_party/libtorch:BUILD",
+#     strip_prefix = "libtorch",
+#     urls = ["https://download.pytorch.org/libtorch/test/cu124/libtorch-cxx11-abi-shared-with-deps-latest.zip"],
+# )
 
-http_archive(
-    name = "libtorch_pre_cxx11_abi",
-    build_file = "@//third_party/libtorch:BUILD",
-    strip_prefix = "libtorch",
-    urls = ["https://download.pytorch.org/libtorch/test/cu124/libtorch-shared-with-deps-latest.zip"],
-)
+# http_archive(
+#     name = "libtorch_pre_cxx11_abi",
+#     build_file = "@//third_party/libtorch:BUILD",
+#     strip_prefix = "libtorch",
+#     urls = ["https://download.pytorch.org/libtorch/test/cu124/libtorch-shared-with-deps-latest.zip"],
+# )
 
-http_archive(
-    name = "libtorch_win",
-    build_file = "@//third_party/libtorch:BUILD",
-    strip_prefix = "libtorch",
-    urls = ["https://download.pytorch.org/libtorch/test/cu124/libtorch-win-shared-with-deps-latest.zip"],
-)
+# http_archive(
+#     name = "libtorch_win",
+#     build_file = "@//third_party/libtorch:BUILD",
+#     strip_prefix = "libtorch",
+#     urls = ["https://download.pytorch.org/libtorch/test/cu124/libtorch-win-shared-with-deps-latest.zip"],
+# )
 
 # Download these tarballs manually from the NVIDIA website
 # Either place them in the distdir directory in third_party and use the --distdir flag
 # or modify the urls to "file:///<PATH TO TARBALL>/<TARBALL NAME>.tar.gz
 
+# http_archive(
+#     name = "tensorrt",
+#     build_file = "@//third_party/tensorrt/archive:BUILD",
+#     sha256 = "606436ed219c72d1a25a889b2b0ae5cb5a68499dd6f944da4cabb3c34c067d55",
+#     strip_prefix = "TensorRT-10.1.0.27",
+#     urls = [
+#         "https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.1.0/tars/TensorRT-10.1.0.27.Linux.x86_64-gnu.cuda-12.4.tar.gz",
+#     ],
+# )
+
 http_archive(
     name = "tensorrt",
     build_file = "@//third_party/tensorrt/archive:BUILD",
-    sha256 = "606436ed219c72d1a25a889b2b0ae5cb5a68499dd6f944da4cabb3c34c067d55",
-    strip_prefix = "TensorRT-10.1.0.27",
+    sha256 = "adff1cd5abe5d87013806172351e58fd024e5bf0fc61d49ef4b84cd38ed99081",
+    strip_prefix = "TensorRT-10.3.0.26",
     urls = [
-        "https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.1.0/tars/TensorRT-10.1.0.27.Linux.x86_64-gnu.cuda-12.4.tar.gz",
+        "https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.3.0/tars/TensorRT-10.3.0.26.Linux.x86_64-gnu.cuda-12.5.tar.gz",
     ],
 )
 
@@ -112,17 +122,19 @@ http_archive(
 # x86_64 python distribution. If using NVIDIA's version just point to the root of the package
 # for both versions here and do not use --config=pre-cxx11-abi
 
-#new_local_repository(
-#    name = "libtorch",
-#    path = "/usr/local/lib/python3.6/dist-packages/torch",
-#    build_file = "third_party/libtorch/BUILD"
-#)
+new_local_repository(
+   name = "libtorch",
+   path = ".venv/lib/python3.11/site-packages/torch",
+   # path = "/usr/local/lib/python3.6/dist-packages/torch",
+   build_file = "third_party/libtorch/BUILD"
+)
 
-#new_local_repository(
-#    name = "libtorch_pre_cxx11_abi",
-#    path = "/usr/local/lib/python3.6/dist-packages/torch",
-#    build_file = "third_party/libtorch/BUILD"
-#)
+new_local_repository(
+   name = "libtorch_pre_cxx11_abi",
+   path = ".venv/lib/python3.11/site-packages/torch",
+   # path = "/usr/local/lib/python3.6/dist-packages/torch",
+   build_file = "third_party/libtorch/BUILD"
+)
 
 #new_local_repository(
 #   name = "tensorrt",
