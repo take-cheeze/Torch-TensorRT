@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <cstdint>
 
 // Simplified version of the c10 Exception infrastructure
 // https://github.com/pytorch/pytorch/blob/master/c10/util/Exception.h
